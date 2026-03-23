@@ -1,15 +1,17 @@
 package com.leboncoin.fizzbuzz.configuration
 
+import com.leboncoin.fizzbuzz.filter.EndpointUsageFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
 @EnableWebSecurity
-open class SecurityConfig {
+open class SecurityConfig(private val endpointUsageFilter: EndpointUsageFilter) {
 
     @Bean
     open fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
@@ -22,6 +24,7 @@ open class SecurityConfig {
             .headers { headers ->
                 headers.frameOptions { it.sameOrigin() }
             }
+            .addFilterBefore(endpointUsageFilter, UsernamePasswordAuthenticationFilter::class.java)
 
         return http.build()
     }
