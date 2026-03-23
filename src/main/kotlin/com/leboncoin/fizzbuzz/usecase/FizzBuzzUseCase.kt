@@ -1,8 +1,8 @@
 package com.leboncoin.fizzbuzz.usecase
 
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 
-@Component
+@Service
 class FizzBuzzUseCase {
 
     fun execute(int1: Int, int2: Int, limit: Int, str1: String, str2: String): List<String> =
