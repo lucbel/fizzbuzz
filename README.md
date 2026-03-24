@@ -12,7 +12,7 @@ A Spring Boot REST API that exposes a classic FizzBuzz endpoint and tracks endpo
 ## Run the application
 
 ```bash
-./mvnw spring-boot:run
+mvn spring-boot:run
 ```
 
 The server starts on `http://localhost:8080`.
