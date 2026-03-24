@@ -10,7 +10,6 @@ class EndpointUsageUseCase(private val repository: EndpointUsageRepository) {
 
     fun execute(url: String, params: String) {
         val hash = md5("$url?$params")
-        println("logging: $hash")
         repository.save(
             EndpointUsageEntity(
                 url = url,
